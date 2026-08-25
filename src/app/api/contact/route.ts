@@ -11,16 +11,17 @@ export async function POST(request: Request) {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
+  const emailDomain = process.env.RESEND_EMAIL_DOMAIN;
 
-  if (!apiKey) {
-    console.error('RESEND_API_KEY is not set — cannot send contact email.');
+  if (!apiKey || !emailDomain) {
+    console.error('RESEND_API_KEY or RESEND_EMAIL_DOMAIN is not set — cannot send contact email.');
     return NextResponse.json({ error: 'Slanje trenutno nije dostupno.' }, { status: 503 });
   }
 
   const resend = new Resend(apiKey);
 
   const { error } = await resend.emails.send({
-    from: 'EdenVille Website <contact@edenville.hr>',
+    from: `EdenVille Website <contact@${emailDomain}>`,
     to: CONTACT_RECIPIENT,
     replyTo: email,
     subject: `Novi upit s web stranice — ${name}`,
