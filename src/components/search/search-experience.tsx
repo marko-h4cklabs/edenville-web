@@ -2,7 +2,7 @@
 
 import { type ReactNode, useMemo, useState } from 'react';
 import { PropertyCard } from '@/components/property-card';
-import { PROPERTY_LOCATIONS, PROPERTY_TYPES, type Property } from '@/lib/properties';
+import { PROPERTY_TYPES, type Property } from '@/lib/properties';
 import {
   BEDROOM_OPTIONS,
   createEmptyFilters,
@@ -28,6 +28,13 @@ export function SearchExperience({ properties }: { properties: Property[] }) {
 
   const results = useMemo(() => filterProperties(properties, filters), [properties, filters]);
   const filtersActive = hasActiveFilters(filters);
+  const availableLocations = useMemo(
+    () =>
+      [...new Set(properties.map((property) => property.location))].sort((a, b) =>
+        a.localeCompare(b, 'hr'),
+      ),
+    [properties],
+  );
 
   return (
     <div className="grid grid-cols-1 gap-10 lg:grid-cols-[280px_1fr]">
@@ -59,7 +66,7 @@ export function SearchExperience({ properties }: { properties: Property[] }) {
           </label>
 
           <FilterGroup title="Lokacija" className="max-h-52 overflow-y-auto pr-1">
-            {PROPERTY_LOCATIONS.map((location) => (
+            {availableLocations.map((location) => (
               <FilterCheckbox
                 key={location}
                 label={location}

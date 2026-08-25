@@ -1,4 +1,4 @@
-import type { Property, PropertyLocation, PropertyType } from '@/lib/properties';
+import type { Property, PropertyType } from '@/lib/properties';
 
 export type PriceRangeKey = 'under-250k' | '251k-400k' | '401k-1m' | 'over-1m' | 'na-upit';
 
@@ -37,7 +37,7 @@ export const BEDROOM_OPTIONS: {
 
 export type SearchFilters = {
   featuredOnly: boolean;
-  locations: Set<PropertyLocation>;
+  locations: Set<string>;
   propertyTypes: Set<PropertyType>;
   priceRanges: Set<PriceRangeKey>;
   bedrooms: Set<BedroomKey>;
