@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import { PropertyCard } from '@/components/property-card';
-import { properties } from '@/lib/properties';
+import { getProperties } from '@/lib/properties';
 
-export function FeaturedProperties() {
+export async function FeaturedProperties() {
+  const properties = (await getProperties()).filter((property) => property.featured);
+
   return (
     <section className="px-gutter py-section-y-sm sm:py-section-y mx-auto max-w-7xl">
       <div className="text-center">
