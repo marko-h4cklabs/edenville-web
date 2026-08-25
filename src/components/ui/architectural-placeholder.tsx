@@ -8,7 +8,14 @@ import { cn } from '@/lib/utils';
  * + faceted line pattern so hero/background image slots read as intentional
  * "luxury real estate" imagery until real photography is supplied.
  */
-export function ArchitecturalPlaceholder({ className }: { className?: string }) {
+export function ArchitecturalPlaceholder({
+  className,
+  monogram,
+}: {
+  className?: string;
+  /** Centered initials, for portrait/avatar placeholder slots (e.g. "MK"). */
+  monogram?: string;
+}) {
   const patternId = useId();
 
   return (
@@ -29,6 +36,11 @@ export function ArchitecturalPlaceholder({ className }: { className?: string }) 
         <rect width="100%" height="100%" fill={`url(#${patternId})`} className="text-cream" />
       </svg>
       <div className="from-ink-deep/90 via-ink-deep/10 absolute inset-0 bg-gradient-to-t to-transparent" />
+      {monogram ? (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <span className="text-gold/40 font-serif text-6xl italic">{monogram}</span>
+        </div>
+      ) : null}
     </div>
   );
 }

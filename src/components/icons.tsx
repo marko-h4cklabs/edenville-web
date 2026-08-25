@@ -49,6 +49,60 @@ export function PhoneIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+export function LinkedinIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+      <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" strokeWidth="1.5" />
+      <circle cx="8" cy="8.5" r="1.15" fill="currentColor" />
+      <path d="M8 11v6.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+      <path
+        d="M12 17.5V13c0-1.1.7-2 2.1-2s1.9 1 1.9 2.2v4.3"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path d="M12 11v.8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function CameraIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+      <path
+        d="M4 8.5A1.5 1.5 0 0 1 5.5 7h2.1l.9-1.5a1 1 0 0 1 .86-.5h3.28a1 1 0 0 1 .86.5l.9 1.5h2.1A1.5 1.5 0 0 1 20 8.5v8A1.5 1.5 0 0 1 18.5 18h-13A1.5 1.5 0 0 1 4 16.5Z"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinejoin="round"
+      />
+      <circle cx="12" cy="12.2" r="3.1" stroke="currentColor" strokeWidth="1.4" />
+    </svg>
+  );
+}
+
+export function StarIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M12 3.5 14.7 9l6 .87-4.35 4.24 1.03 5.99L12 17.1l-5.38 2.99 1.03-5.99L3.3 9.87 9.3 9Z" />
+    </svg>
+  );
+}
+
+export function ChevronDownIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+      <path
+        d="m6 9 6 6 6-6"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export function MenuIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
