@@ -146,3 +146,8 @@ export async function getPropertyBySlug(slug: string): Promise<Property | undefi
 export function formatPropertySize(sizeM2: Property['sizeM2']): string {
   return `${sizeM2} m²`;
 }
+
+export function formatPropertyPrice(priceEUR: Property['priceEUR']): string {
+  if (priceEUR === null) return 'Na Upit';
+  return `${new Intl.NumberFormat('hr-HR').format(priceEUR)} €`;
+}
