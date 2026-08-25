@@ -1,26 +1,33 @@
 @import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+ * Palette and type sampled directly from edenville.hr (Framer) — see
+ * project notes. Gold is the primary brand accent; ink/navy bookend
+ * the page (header, footer) while cream/mist carry the content sections.
+ */
+@theme {
+  --color-ink: #191a20;
+  --color-ink-deep: #0a0b0b;
+  --color-cream: #fff8f4;
+  --color-mist: #f5f5f5;
+  --color-gold: #cba135;
+  --color-gold-muted: #a89e51;
+  --color-navy: #263c48;
+  --color-line: #d9d9d9;
+  --color-muted: #73737d;
+
+  --spacing-gutter: 1.5rem;
+  --spacing-section-y: 6rem;
+  --spacing-section-y-sm: 4rem;
+  --spacing-header: 5rem;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-lato);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-cream);
+  color: var(--color-ink);
 }
