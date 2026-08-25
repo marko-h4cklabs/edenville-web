@@ -52,6 +52,7 @@ export type Property = {
   /** null for "Na Upit" (price on request) listings. */
   priceEUR: number | null;
   bedrooms: number;
+  bathrooms: number;
   images: string[];
   description: string;
   featured: boolean;
@@ -71,6 +72,7 @@ const properties: Property[] = [
     propertyType: 'Stan',
     priceEUR: 420_000,
     bedrooms: 3,
+    bathrooms: 2,
     images: placeholderImages('luksuzan-vmd-stan-138-m2', 10),
     description:
       'Prostran stan visokog standarda opremljen kvalitetnim materijalima i modernim dizajnom. Otvoreni dnevni boravak s kuhinjom, velike terase i pogled na grad čine ovaj stan idealnim za život u srcu Zagreba.',
@@ -85,6 +87,7 @@ const properties: Property[] = [
     propertyType: 'Stan',
     priceEUR: 690_000,
     bedrooms: 5,
+    bathrooms: 3,
     images: placeholderImages('dizajnerski-5-sobni-stan-238-m2', 10),
     description:
       'Dvoetažni dizajnerski stan s pet soba, uređen po mjeri s pažnjom posvećenom svakom detalju. Velike staklene površine donose obilje prirodnog svjetla, a raspored prostora pogodan je i za obitelji i za rad od kuće.',
@@ -99,6 +102,7 @@ const properties: Property[] = [
     propertyType: 'Villa',
     priceEUR: 890_000,
     bedrooms: 4,
+    bathrooms: 3,
     images: placeholderImages('luksuzna-vila-s-bazenom-i-pogledom-na-more-176-m2', 13),
     description:
       'Vila smještena na mirnoj lokaciji uz obalu, s privatnim bazenom i panoramskim pogledom na more. Prostrane terase, uređen vrt i blizina plaže čine je savršenim odmaralištem ili stalnim domom.',
@@ -113,6 +117,7 @@ const properties: Property[] = [
     propertyType: 'Stan',
     priceEUR: null,
     bedrooms: 3,
+    bathrooms: 2,
     images: placeholderImages('luksuzni-stanovi-novogradnja-maksimir', 18),
     description:
       'Novogradnja u mirnom dijelu Maksimira, okružena zelenilom i s izvrsnom prometnom povezanošću. Stanovi su izvedeni prema visokim energetskim standardima uz potresnu sigurnost i kvalitetnu opremu.',
@@ -127,6 +132,7 @@ const properties: Property[] = [
     propertyType: 'Villa',
     priceEUR: 395_000,
     bedrooms: 4,
+    bathrooms: 2,
     images: placeholderImages('luksuzna-vila-s-bazenom-125-m2', 10),
     description:
       'Elegantna vila s bazenom, jacuzzijem i saunom, smještena na prostranoj parceli. Zimski vrt, solarni paneli i visokokvalitetna gradnja omogućuju udoban boravak tijekom cijele godine.',
@@ -141,6 +147,26 @@ export async function getProperties(): Promise<Property[]> {
 
 export async function getPropertyBySlug(slug: string): Promise<Property | undefined> {
   return properties.find((property) => property.slug === slug);
+}
+
+/**
+ * Prefers properties sharing the current one's location or type, then fills
+ * any remaining slots with other properties.
+ */
+export function getRelatedProperties(
+  properties: Property[],
+  current: Property,
+  count = 2,
+): Property[] {
+  const others = properties.filter((property) => property.slug !== current.slug);
+
+  const preferred = others.filter(
+    (property) =>
+      property.location === current.location || property.propertyType === current.propertyType,
+  );
+  const rest = others.filter((property) => !preferred.includes(property));
+
+  return [...preferred, ...rest].slice(0, count);
 }
 
 export function formatPropertySize(sizeM2: Property['sizeM2']): string {

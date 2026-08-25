@@ -108,8 +108,8 @@ export default function PrivacyPolicyPage() {
           body: (
             <p>
               For any privacy concerns or questions, feel free to reach out at{' '}
-              <a href="mailto:homfortsupport@gmail.com" className="text-gold hover:underline">
-                homfortsupport@gmail.com
+              <a href="mailto:matija@edenville.hr" className="text-gold hover:underline">
+                matija@edenville.hr
               </a>
               .
             </p>

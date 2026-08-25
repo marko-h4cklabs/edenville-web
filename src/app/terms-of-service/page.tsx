@@ -92,8 +92,8 @@ export default function TermsOfServicePage() {
           body: (
             <p>
               If you have any questions or concerns regarding these terms, please contact us at{' '}
-              <a href="mailto:homfortsupport@gmail.com" className="text-gold hover:underline">
-                homfortsupport@gmail.com
+              <a href="mailto:matija@edenville.hr" className="text-gold hover:underline">
+                matija@edenville.hr
               </a>
               .
             </p>

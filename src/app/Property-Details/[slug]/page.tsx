@@ -3,9 +3,10 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeftIcon } from '@/components/icons';
 import { InquiryCta } from '@/components/inquiry-cta';
+import { PropertyCard } from '@/components/property-card';
 import { PropertyGallery } from '@/components/property/property-gallery';
 import { PropertyMeta } from '@/components/property/property-meta';
-import { getProperties, getPropertyBySlug } from '@/lib/properties';
+import { getProperties, getPropertyBySlug, getRelatedProperties } from '@/lib/properties';
 
 export async function generateStaticParams() {
   const properties = await getProperties();
@@ -35,6 +36,8 @@ export default async function PropertyDetailsPage({
   if (!property) {
     notFound();
   }
+
+  const relatedProperties = getRelatedProperties(await getProperties(), property, 2);
 
   return (
     <div className="px-gutter py-section-y-sm sm:py-section-y mx-auto max-w-7xl">
@@ -69,6 +72,17 @@ export default async function PropertyDetailsPage({
           <InquiryCta />
         </div>
       </div>
+
+      {relatedProperties.length > 0 ? (
+        <div className="mt-16">
+          <h2 className="text-ink font-serif text-xl italic">Slične Nekretnine</h2>
+          <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2">
+            {relatedProperties.map((related) => (
+              <PropertyCard key={related.slug} property={related} />
+            ))}
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
