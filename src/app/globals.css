@@ -17,8 +17,8 @@
   --color-muted: #73737d;
 
   --spacing-gutter: 1.5rem;
-  --spacing-section-y: 6rem;
-  --spacing-section-y-sm: 4rem;
+  --spacing-section-y: 7rem;
+  --spacing-section-y-sm: 5rem;
   --spacing-header: 5rem;
 }
 
@@ -30,4 +30,31 @@
 body {
   background-color: var(--color-cream);
   color: var(--color-ink);
+}
+
+/*
+ * Progressive-enhancement fade-in for section headings: only applies when
+ * the browser supports scroll-driven animations, so unsupported browsers
+ * (no @supports match) simply render headings at rest — no JS, no
+ * layout shift, no risk of stuck-invisible content.
+ */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .fade-in-up {
+      animation: fade-in-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 25%;
+    }
+
+    @keyframes fade-in-up {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
 }

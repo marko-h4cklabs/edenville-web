@@ -7,7 +7,7 @@ export function ReviewsPreview() {
 
   return (
     <section className="px-gutter py-section-y-sm sm:py-section-y mx-auto max-w-7xl">
-      <div className="text-center">
+      <div className="fade-in-up text-center">
         <p className="text-gold text-sm font-semibold tracking-[0.15em] uppercase">Recenzije</p>
         <h2 className="text-ink mt-3 font-serif text-3xl italic sm:text-4xl">
           Riječi Naših Klijenata

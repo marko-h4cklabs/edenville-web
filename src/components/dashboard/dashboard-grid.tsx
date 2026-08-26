@@ -5,7 +5,7 @@ import { PropertyCard } from '@/components/property-card';
 import type { Property } from '@/lib/properties';
 import { cn } from '@/lib/utils';
 
-type SortMode = 'latest' | 'featured';
+export type SortMode = 'latest' | 'featured';
 
 const SORT_OPTIONS: { key: SortMode; label: string }[] = [
   { key: 'latest', label: 'Najnovije' },
@@ -22,8 +22,14 @@ function sortProperties(properties: Property[], mode: SortMode): Property[] {
   return sorted;
 }
 
-export function DashboardGrid({ properties }: { properties: Property[] }) {
-  const [sortMode, setSortMode] = useState<SortMode>('latest');
+export function DashboardGrid({
+  properties,
+  initialSort = 'latest',
+}: {
+  properties: Property[];
+  initialSort?: SortMode;
+}) {
+  const [sortMode, setSortMode] = useState<SortMode>(initialSort);
   const sorted = useMemo(() => sortProperties(properties, sortMode), [properties, sortMode]);
 
   return (

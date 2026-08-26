@@ -23,8 +23,14 @@ function toggleSetValue<T>(set: Set<T>, value: T): Set<T> {
   return next;
 }
 
-export function SearchExperience({ properties }: { properties: Property[] }) {
-  const [filters, setFilters] = useState<SearchFilters>(createEmptyFilters);
+export function SearchExperience({
+  properties,
+  initialQuery = '',
+}: {
+  properties: Property[];
+  initialQuery?: string;
+}) {
+  const [filters, setFilters] = useState<SearchFilters>(() => createEmptyFilters(initialQuery));
 
   const results = useMemo(() => filterProperties(properties, filters), [properties, filters]);
   const filtersActive = hasActiveFilters(filters);
@@ -65,9 +71,12 @@ export function SearchExperience({ properties }: { properties: Property[] }) {
             Istaknute Nekretnine
           </label>
 
-          <FilterGroup title="Lokacija" className="max-h-52 overflow-y-auto pr-1">
+          <FilterGroup
+            title="Lokacija"
+            className="max-h-52 flex-row flex-wrap gap-2 overflow-y-auto pr-1"
+          >
             {availableLocations.map((location) => (
-              <FilterCheckbox
+              <FilterPill
                 key={location}
                 label={location}
                 checked={filters.locations.has(location)}
@@ -81,9 +90,9 @@ export function SearchExperience({ properties }: { properties: Property[] }) {
             ))}
           </FilterGroup>
 
-          <FilterGroup title="Vrsta Nekretnine">
+          <FilterGroup title="Vrsta Nekretnine" className="flex-row flex-wrap gap-2">
             {PROPERTY_TYPES.map((type) => (
-              <FilterCheckbox
+              <FilterPill
                 key={type}
                 label={type}
                 checked={filters.propertyTypes.has(type)}
@@ -132,7 +141,13 @@ export function SearchExperience({ properties }: { properties: Property[] }) {
       </aside>
 
       <div>
-        <p className="text-muted text-sm">
+        {filters.query.trim() ? (
+          <p className="text-ink text-sm">
+            Rezultati pretrage za{' '}
+            <span className="font-semibold">&ldquo;{filters.query}&rdquo;</span>
+          </p>
+        ) : null}
+        <p className="text-muted mt-1 text-sm">
           {results.length} {results.length === 1 ? 'nekretnina pronađena' : 'nekretnina pronađeno'}
         </p>
 
@@ -170,6 +185,32 @@ function FilterGroup({
       </legend>
       <div className={cn('flex flex-col gap-2.5', className)}>{children}</div>
     </fieldset>
+  );
+}
+
+function FilterPill({
+  label,
+  checked,
+  onChange,
+}: {
+  label: string;
+  checked: boolean;
+  onChange: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      aria-pressed={checked}
+      onClick={onChange}
+      className={cn(
+        'rounded-full border px-3.5 py-1.5 text-xs font-medium tracking-wide transition-all duration-150',
+        checked
+          ? 'bg-gold border-gold text-ink'
+          : 'border-line text-ink hover:border-gold hover:text-gold',
+      )}
+    >
+      {label}
+    </button>
   );
 }
 

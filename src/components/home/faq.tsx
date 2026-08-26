@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ChevronDownIcon } from '@/components/icons';
+import { PlusIcon } from '@/components/icons';
 
 const FAQ_ITEMS = [
   {
@@ -53,7 +53,7 @@ export function Faq() {
   return (
     <section id="faq" className="py-section-y-sm sm:py-section-y scroll-mt-header">
       <div className="px-gutter mx-auto max-w-3xl">
-        <div className="text-center">
+        <div className="fade-in-up text-center">
           <p className="text-gold text-sm font-semibold tracking-[0.15em] uppercase">FAQ</p>
           <h2 className="text-ink mt-3 font-serif text-3xl italic sm:text-4xl">
             Vi ste pitali. Mi smo odgovorili.
@@ -65,7 +65,7 @@ export function Faq() {
             <details key={item.question} className="group py-6">
               <summary className="text-ink flex cursor-pointer list-none items-start justify-between gap-4 font-serif text-lg italic marker:content-none [&::-webkit-details-marker]:hidden">
                 {item.question}
-                <ChevronDownIcon className="text-gold mt-1 size-5 shrink-0 transition-transform group-open:rotate-180" />
+                <PlusIcon className="text-gold mt-1 size-5 shrink-0 transition-transform duration-200 group-open:rotate-45" />
               </summary>
               <p className="text-muted mt-4 text-sm leading-relaxed">{item.answer}</p>
             </details>
@@ -75,7 +75,7 @@ export function Faq() {
         <div className="mt-12 flex justify-center">
           <Link
             href="/contact"
-            className="bg-gold text-ink hover:bg-gold-muted rounded-full px-8 py-3.5 text-sm font-semibold tracking-wide transition-colors"
+            className="bg-gold text-ink hover:bg-gold-muted shadow-gold/20 rounded-full px-9 py-4 text-sm font-semibold tracking-wide shadow-md transition-all duration-200 hover:scale-[1.03] hover:shadow-lg"
           >
             Kontaktirajte Nas
           </Link>

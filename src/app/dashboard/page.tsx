@@ -7,8 +7,10 @@ export const metadata: Metadata = {
   description: 'Pregledajte sve dostupne luksuzne nekretnine u ponudi agencije EdenVille.',
 };
 
-export default async function DashboardPage() {
+export default async function DashboardPage({ searchParams }: PageProps<'/dashboard'>) {
   const properties = await getProperties();
+  const { sort } = await searchParams;
+  const initialSort = sort === 'featured' ? 'featured' : 'latest';
 
   return (
     <div className="px-gutter py-section-y-sm sm:py-section-y mx-auto max-w-7xl">
@@ -19,7 +21,7 @@ export default async function DashboardPage() {
       </p>
 
       <div className="mt-10">
-        <DashboardGrid properties={properties} />
+        <DashboardGrid properties={properties} initialSort={initialSort} />
       </div>
     </div>
   );

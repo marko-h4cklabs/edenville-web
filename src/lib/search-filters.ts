@@ -36,6 +36,7 @@ export const BEDROOM_OPTIONS: {
 ];
 
 export type SearchFilters = {
+  query: string;
   featuredOnly: boolean;
   locations: Set<string>;
   propertyTypes: Set<PropertyType>;
@@ -43,8 +44,9 @@ export type SearchFilters = {
   bedrooms: Set<BedroomKey>;
 };
 
-export function createEmptyFilters(): SearchFilters {
+export function createEmptyFilters(initialQuery = ''): SearchFilters {
   return {
+    query: initialQuery,
     featuredOnly: false,
     locations: new Set(),
     propertyTypes: new Set(),
@@ -55,11 +57,26 @@ export function createEmptyFilters(): SearchFilters {
 
 export function hasActiveFilters(filters: SearchFilters): boolean {
   return (
+    filters.query.trim().length > 0 ||
     filters.featuredOnly ||
     filters.locations.size > 0 ||
     filters.propertyTypes.size > 0 ||
     filters.priceRanges.size > 0 ||
     filters.bedrooms.size > 0
+  );
+}
+
+/** The price bracket a property falls into, for display as a small badge (e.g. "€401K-€1M"). */
+export function getPriceRangeLabel(priceEUR: Property['priceEUR']): string | undefined {
+  return PRICE_RANGES.find((range) => range.test(priceEUR))?.label;
+}
+
+function matchesQuery(property: Property, query: string): boolean {
+  const normalized = query.trim().toLowerCase();
+  if (!normalized) return true;
+  return (
+    property.title.toLowerCase().includes(normalized) ||
+    property.location.toLowerCase().includes(normalized)
   );
 }
 
@@ -70,6 +87,8 @@ export function hasActiveFilters(filters: SearchFilters): boolean {
  */
 export function filterProperties(properties: Property[], filters: SearchFilters): Property[] {
   return properties.filter((property) => {
+    if (!matchesQuery(property, filters.query)) return false;
+
     if (filters.featuredOnly && !property.featured) return false;
 
     if (filters.locations.size > 0 && !filters.locations.has(property.location)) return false;

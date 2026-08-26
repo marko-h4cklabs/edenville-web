@@ -25,10 +25,12 @@ export function About() {
         </div>
 
         <div>
-          <p className="text-gold text-sm font-semibold tracking-[0.15em] uppercase">O nama</p>
-          <h2 className="text-ink mt-3 font-serif text-3xl italic sm:text-4xl">
-            Upoznajte EdenVille
-          </h2>
+          <div className="fade-in-up">
+            <p className="text-gold text-sm font-semibold tracking-[0.15em] uppercase">O nama</p>
+            <h2 className="text-ink mt-3 font-serif text-3xl italic sm:text-4xl">
+              Upoznajte EdenVille
+            </h2>
+          </div>
           <p className="text-muted mt-6 leading-relaxed">
             Matija Kutnjak je licencirani broker za nekretnine čija karijera u svijetu nekretnina
             počinje već s 19 godina. Kroz dugogodišnje iskustvo izgradio je duboko razumijevanje

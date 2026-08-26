@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { SearchIcon } from '@/components/icons';
 import { ArchitecturalPlaceholder } from '@/components/ui/architectural-placeholder';
 
 const STATS = [
@@ -24,9 +25,31 @@ export function Hero() {
         <h1 className="text-cream mt-8 font-serif text-4xl leading-tight italic sm:text-5xl md:text-6xl">
           Pronađite svoju idealnu <span className="text-gold">&ldquo;Vilu iz Edena&rdquo;</span>
         </h1>
+
+        <form
+          action="/search"
+          method="GET"
+          role="search"
+          className="focus-within:border-gold/50 mt-10 flex w-full max-w-md items-center gap-2 rounded-full border border-white/20 bg-white/10 py-2 pr-2 pl-5 backdrop-blur-sm transition-colors focus-within:bg-white/15"
+        >
+          <input
+            type="text"
+            name="q"
+            placeholder="Pretraži po lokaciji ili nazivu..."
+            className="text-cream placeholder:text-cream/50 min-w-0 flex-1 bg-transparent text-sm outline-none"
+          />
+          <button
+            type="submit"
+            aria-label="Pretraži nekretnine"
+            className="bg-gold text-ink hover:bg-gold-muted flex size-10 shrink-0 items-center justify-center rounded-full transition-all duration-200 hover:scale-105"
+          >
+            <SearchIcon className="size-4.5" />
+          </button>
+        </form>
+
         <Link
           href="/search"
-          className="bg-gold text-ink hover:bg-gold-muted mt-10 rounded-full px-8 py-3.5 text-sm font-semibold tracking-wide transition-colors"
+          className="bg-gold text-ink hover:bg-gold-muted shadow-gold/20 mt-6 rounded-full px-9 py-4 text-sm font-semibold tracking-wide shadow-md transition-all duration-200 hover:scale-[1.03] hover:shadow-lg"
         >
           Potraži nekretnine
         </Link>

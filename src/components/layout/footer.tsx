@@ -5,7 +5,7 @@ import { ArchitecturalPlaceholder } from '@/components/ui/architectural-placehol
 
 const CATEGORY_LINKS = [
   { label: 'Latest Properties', href: '/dashboard' },
-  { label: 'Featured Properties', href: '/dashboard' },
+  { label: 'Featured Properties', href: '/dashboard?sort=featured' },
 ];
 
 const MORE_LINKS = [

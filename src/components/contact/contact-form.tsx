@@ -72,7 +72,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === 'submitting'}
-        className="bg-gold text-ink hover:bg-gold-muted w-full rounded-full px-6 py-3.5 text-sm font-semibold tracking-wide transition-colors disabled:opacity-60"
+        className="bg-gold text-ink hover:bg-gold-muted shadow-gold/20 w-full rounded-full px-7 py-4 text-sm font-semibold tracking-wide shadow-md transition-all duration-200 hover:shadow-lg hover:brightness-105 disabled:opacity-60"
       >
         {status === 'submitting' ? 'Slanje...' : 'Pošaljite'}
       </button>

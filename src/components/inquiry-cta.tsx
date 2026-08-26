@@ -12,7 +12,7 @@ export function InquiryCta() {
 
       <Link
         href="/contact"
-        className="bg-gold text-ink hover:bg-gold-muted mt-6 flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold tracking-wide transition-colors"
+        className="bg-gold text-ink hover:bg-gold-muted shadow-gold/20 mt-6 flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide shadow-md transition-all duration-200 hover:scale-[1.03] hover:shadow-lg"
       >
         Kontaktirajte Nas
       </Link>

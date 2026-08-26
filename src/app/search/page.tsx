@@ -10,8 +10,10 @@ export const metadata: Metadata = {
     'Pretražite dostupne luksuzne nekretnine prema lokaciji, vrsti, cijeni i broju soba.',
 };
 
-export default async function SearchPage() {
+export default async function SearchPage({ searchParams }: PageProps<'/search'>) {
   const properties = await getProperties();
+  const { q } = await searchParams;
+  const initialQuery = typeof q === 'string' ? q : '';
 
   return (
     <div className="px-gutter py-section-y-sm sm:py-section-y mx-auto max-w-7xl">
@@ -26,7 +28,7 @@ export default async function SearchPage() {
       <h1 className="text-ink mt-6 font-serif text-3xl italic sm:text-4xl">Tražilica Nekretnina</h1>
 
       <div className="mt-10">
-        <SearchExperience properties={properties} />
+        <SearchExperience properties={properties} initialQuery={initialQuery} />
       </div>
     </div>
   );

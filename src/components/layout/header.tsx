@@ -6,7 +6,7 @@ import { CloseIcon, MenuIcon } from '@/components/icons';
 import { Logo } from '@/components/layout/logo';
 
 const NAV_LINKS = [
-  { label: 'SVE NEKRETNINE', href: '/dashboard' },
+  { label: 'SVE NEKRETNINE', href: '/search' },
   { label: 'RECENZIJE', href: '/recenzije' },
   { label: 'FAQ', href: '/#faq' },
   { label: 'O NAMA', href: '/#onama' },
@@ -34,7 +34,7 @@ export function Header() {
           ))}
           <Link
             href={CTA_LINK.href}
-            className="bg-gold text-ink hover:bg-gold-muted rounded-full px-5 py-2.5 text-sm font-semibold tracking-wide transition-colors"
+            className="bg-gold text-ink hover:bg-gold-muted shadow-gold/20 rounded-full px-6 py-3 text-sm font-semibold tracking-wide shadow-sm transition-all duration-200 hover:scale-[1.03] hover:shadow-md"
           >
             {CTA_LINK.label}
           </Link>
@@ -71,7 +71,7 @@ export function Header() {
           <Link
             href={CTA_LINK.href}
             onClick={() => setIsMenuOpen(false)}
-            className="bg-gold text-ink hover:bg-gold-muted mt-3 rounded-full px-5 py-2.5 text-center text-sm font-semibold tracking-wide transition-colors"
+            className="bg-gold text-ink hover:bg-gold-muted shadow-gold/20 mt-3 rounded-full px-6 py-3 text-center text-sm font-semibold tracking-wide shadow-sm transition-all duration-200 hover:shadow-md hover:brightness-105"
           >
             {CTA_LINK.label}
           </Link>
