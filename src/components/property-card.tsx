@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { BathIcon, BedIcon, CameraIcon } from '@/components/icons';
 import { ArchitecturalPlaceholder } from '@/components/ui/architectural-placeholder';
@@ -6,6 +7,7 @@ import { getPriceRangeLabel } from '@/lib/search-filters';
 
 export function PropertyCard({ property }: { property: Property }) {
   const priceRangeLabel = getPriceRangeLabel(property.priceEUR);
+  const coverImage = property.images[0];
 
   return (
     <Link
@@ -13,7 +15,17 @@ export function PropertyCard({ property }: { property: Property }) {
       className="group border-line hover:border-gold/30 block overflow-hidden rounded-2xl border bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
     >
       <div className="relative aspect-[4/3] overflow-hidden">
-        <ArchitecturalPlaceholder className="transition-transform duration-500 group-hover:scale-105" />
+        {coverImage ? (
+          <Image
+            src={coverImage}
+            alt={property.title}
+            fill
+            sizes="(min-width: 1280px) 33vw, (min-width: 640px) 50vw, 100vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        ) : (
+          <ArchitecturalPlaceholder className="transition-transform duration-500 group-hover:scale-105" />
+        )}
         {priceRangeLabel ? (
           <div className="bg-gold text-ink absolute top-3 left-3 rounded-full px-2.5 py-1 text-xs font-semibold">
             {priceRangeLabel}

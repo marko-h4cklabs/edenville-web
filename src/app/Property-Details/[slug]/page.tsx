@@ -50,7 +50,7 @@ export default async function PropertyDetailsPage({
       </Link>
 
       <div className="mt-6">
-        <PropertyGallery images={property.images} />
+        <PropertyGallery images={property.images} title={property.title} />
       </div>
 
       <div className="mt-10 grid grid-cols-1 gap-12 lg:grid-cols-[1fr_320px]">

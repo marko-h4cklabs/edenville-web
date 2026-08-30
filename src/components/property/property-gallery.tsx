@@ -1,11 +1,12 @@
 'use client';
 
+import Image from 'next/image';
 import { useState } from 'react';
 import { CameraIcon, ChevronLeftIcon, ChevronRightIcon } from '@/components/icons';
 import { ArchitecturalPlaceholder } from '@/components/ui/architectural-placeholder';
 import { cn } from '@/lib/utils';
 
-export function PropertyGallery({ images }: { images: string[] }) {
+export function PropertyGallery({ images, title }: { images: string[]; title?: string }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const total = images.length;
 
@@ -16,7 +17,21 @@ export function PropertyGallery({ images }: { images: string[] }) {
   return (
     <div>
       <div className="relative aspect-[16/10] overflow-hidden rounded-2xl">
-        <ArchitecturalPlaceholder key={activeIndex} monogram={String(activeIndex + 1)} />
+        {total > 0 ? (
+          <Image
+            key={activeIndex}
+            src={images[activeIndex]}
+            alt={
+              title ? `${title} — fotografija ${activeIndex + 1}` : `Fotografija ${activeIndex + 1}`
+            }
+            fill
+            priority={activeIndex === 0}
+            sizes="(min-width: 1024px) 80vw, 100vw"
+            className="object-cover"
+          />
+        ) : (
+          <ArchitecturalPlaceholder />
+        )}
 
         {total > 1 ? (
           <>
@@ -39,17 +54,19 @@ export function PropertyGallery({ images }: { images: string[] }) {
           </>
         ) : null}
 
-        <div className="bg-ink-deep/70 text-cream absolute right-4 bottom-4 flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium backdrop-blur-sm">
-          <CameraIcon className="size-3.5" />
-          {activeIndex + 1} / {total}
-        </div>
+        {total > 0 ? (
+          <div className="bg-ink-deep/70 text-cream absolute right-4 bottom-4 flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium backdrop-blur-sm">
+            <CameraIcon className="size-3.5" />
+            {activeIndex + 1} / {total}
+          </div>
+        ) : null}
       </div>
 
       {total > 1 ? (
         <div className="mt-4 grid grid-cols-5 gap-3 sm:grid-cols-8">
-          {images.map((_, index) => (
+          {images.map((image, index) => (
             <button
-              key={index}
+              key={image}
               type="button"
               onClick={() => goTo(index)}
               aria-label={`Prikaži fotografiju ${index + 1}`}
@@ -59,7 +76,7 @@ export function PropertyGallery({ images }: { images: string[] }) {
                 index === activeIndex ? 'ring-gold' : 'hover:ring-line ring-transparent',
               )}
             >
-              <ArchitecturalPlaceholder />
+              <Image src={image} alt="" fill sizes="120px" className="object-cover" />
             </button>
           ))}
         </div>
