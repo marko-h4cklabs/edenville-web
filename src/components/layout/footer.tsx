@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { FacebookIcon, InstagramIcon, MailIcon, PhoneIcon } from '@/components/icons';
 import { Logo } from '@/components/layout/logo';
-import { ArchitecturalPlaceholder } from '@/components/ui/architectural-placeholder';
 
 const CATEGORY_LINKS = [
   { label: 'Latest Properties', href: '/dashboard' },
@@ -33,7 +32,11 @@ function FooterHeading({ children }: { children: React.ReactNode }) {
 export function Footer() {
   return (
     <footer className="bg-ink text-cream relative overflow-hidden">
-      <ArchitecturalPlaceholder className="opacity-60" />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 opacity-10"
+        style={{ backgroundImage: 'url(/images/footer-noise.png)', backgroundRepeat: 'repeat', backgroundSize: '150px' }}
+      />
 
       <div className="px-gutter relative mx-auto max-w-7xl py-16 sm:py-20">
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">

@@ -1,5 +1,5 @@
+import Image from 'next/image';
 import { FacebookIcon, InstagramIcon, LinkedinIcon } from '@/components/icons';
-import { ArchitecturalPlaceholder } from '@/components/ui/architectural-placeholder';
 
 const SOCIALS = [
   {
@@ -17,10 +17,22 @@ export function About() {
       <div className="px-gutter mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-2">
         <div className="relative mx-auto aspect-[4/5] w-full max-w-sm">
           <div className="relative h-full w-full overflow-hidden rounded-2xl">
-            <ArchitecturalPlaceholder monogram="MK" />
+            <Image
+              src="/images/about-portrait-main.jpg"
+              alt="Matija Kutnjak"
+              fill
+              sizes="(min-width: 1024px) 384px, 90vw"
+              className="object-cover"
+            />
           </div>
           <div className="border-mist absolute -right-6 -bottom-6 h-2/5 w-2/5 overflow-hidden rounded-2xl border-4">
-            <ArchitecturalPlaceholder />
+            <Image
+              src="/images/about-portrait-lifestyle.jpg"
+              alt="Matija Kutnjak"
+              fill
+              sizes="200px"
+              className="object-cover"
+            />
           </div>
         </div>
 

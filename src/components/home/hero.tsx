@@ -1,6 +1,6 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { SearchIcon } from '@/components/icons';
-import { ArchitecturalPlaceholder } from '@/components/ui/architectural-placeholder';
 
 const STATS = [
   { value: '130+', label: 'Zadovoljnih Klijenata' },
@@ -10,7 +10,15 @@ const STATS = [
 export function Hero() {
   return (
     <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden text-center">
-      <ArchitecturalPlaceholder />
+      <Image
+        src="/images/hero-bg.jpg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
+      />
+      <div className="from-ink-deep/90 via-ink-deep/40 absolute inset-0 bg-gradient-to-t to-transparent" />
       <div className="px-gutter relative z-10 mx-auto flex max-w-3xl flex-col items-center py-24">
         <div className="flex flex-wrap items-center justify-center gap-3">
           {STATS.map((stat) => (
