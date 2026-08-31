@@ -88,15 +88,24 @@ export function Footer() {
               ))}
             </div>
 
-            <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-white/10 pt-6">
-              <Image
-                src="/images/hgk-logo.jpeg"
-                alt="Hrvatska gospodarska komora"
-                width={1320}
-                height={671}
-                className="h-8 w-auto rounded-sm opacity-70 grayscale"
-              />
-              <p className="text-cream/40 text-xs tracking-wide">
+            <div className="mt-6 border-t border-white/10 pt-6">
+              <div className="flex items-center gap-4">
+                <Image
+                  src="/images/hgk-crest.png"
+                  alt="HGK"
+                  width={562}
+                  height={399}
+                  className="h-16 w-auto shrink-0 rounded-sm opacity-70 grayscale sm:h-20"
+                />
+                <p className="text-cream/40 text-[10px] leading-tight font-medium tracking-[0.1em] uppercase sm:text-xs">
+                  Hrvatska
+                  <br />
+                  Gospodarska
+                  <br />
+                  Komora
+                </p>
+              </div>
+              <p className="text-cream/40 mt-4 text-xs tracking-wide">
                 Licencirana agencija za nekretnine
               </p>
             </div>
