@@ -44,14 +44,27 @@ export function About() {
             </h2>
           </div>
           <p className="text-muted mt-6 leading-relaxed">
-            Matija Kutnjak je licencirani broker za nekretnine čija karijera u svijetu nekretnina
-            počinje već s 19 godina. Kroz dugogodišnje iskustvo izgradio je duboko razumijevanje
-            tržišta luksuznih nekretnina diljem Hrvatske.
+            Svakom klijentu koji kupuje ili prodaje nekretninu pristupamo osobno i s punom
+            posvećenošću.
           </p>
           <p className="text-muted mt-4 leading-relaxed">
-            Svakom klijentu koji kupuje ili prodaje nekretninu pristupa osobno i s punom
-            posvećenošću, vjerujući da kupnja nekretnine nije samo transakcija, već jedna od
-            najvažnijih životnih odluka.
+            Naš cilj je da vam, u skladu s vašim mogućnostima i željama, ponudimo ono najbolje što
+            naša ponuda ima.
+          </p>
+          <p className="text-muted mt-4 leading-relaxed">
+            Svoju karijeru započeo sam s 19 godina, a danas me vodi iskrena strast prema ovom poslu
+            u svakoj nekretnini vidim život.
+          </p>
+          <p className="text-muted mt-4 leading-relaxed">
+            Upravo zato pažljivo biram nekretnine koje su funkcionalne, ali i potpuno usklađene sa
+            svim potrebnim procedurama i propisima.
+          </p>
+          <p className="text-muted mt-4 leading-relaxed">
+            Nismo jedina agencija za nekretnine, ali naši klijenti odabrali su nas, i preporučili
+            nas drugima jer su prepoznali našu profesionalnost i predanost.
+          </p>
+          <p className="text-muted mt-4 leading-relaxed">
+            Očekujem Vaš poziv ili poruku da zajedno krenemo pronaći najbolji dom za Vas.
           </p>
           <div className="mt-8 flex items-center gap-4">
             {SOCIALS.map(({ label, href, icon: Icon }) => (
