@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import {
   FacebookIcon,
@@ -87,9 +88,18 @@ export function Footer() {
               ))}
             </div>
 
-            <p className="text-cream/40 mt-6 border-t border-white/10 pt-6 text-xs tracking-wide">
-              Licencirana agencija za nekretnine
-            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-white/10 pt-6">
+              <Image
+                src="/images/hgk-logo.jpeg"
+                alt="Hrvatska gospodarska komora"
+                width={1320}
+                height={671}
+                className="h-8 w-auto rounded-sm opacity-70 grayscale"
+              />
+              <p className="text-cream/40 text-xs tracking-wide">
+                Licencirana agencija za nekretnine
+              </p>
+            </div>
           </div>
 
           <div>
