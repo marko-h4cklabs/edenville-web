@@ -1,5 +1,13 @@
 import Link from 'next/link';
-import { FacebookIcon, InstagramIcon, MailIcon, PhoneIcon } from '@/components/icons';
+import {
+  FacebookIcon,
+  InstagramIcon,
+  LinkedinIcon,
+  MailIcon,
+  PhoneIcon,
+  TiktokIcon,
+  YoutubeIcon,
+} from '@/components/icons';
 import { Logo } from '@/components/layout/logo';
 
 const CATEGORY_LINKS = [
@@ -15,8 +23,17 @@ const MORE_LINKS = [
 ];
 
 const SOCIAL_LINKS = [
-  { label: 'Instagram', href: 'https://www.instagram.com/matijakutnjak/', icon: InstagramIcon },
   { label: 'Facebook', href: 'https://web.facebook.com/matija.kutnjak.33', icon: FacebookIcon },
+  { label: 'Instagram', href: 'https://www.instagram.com/matijakutnjak/', icon: InstagramIcon },
+  // No real YouTube profile sourced yet — placeholder until Marko supplies one.
+  { label: 'YouTube', href: '#', icon: YoutubeIcon },
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/matija-kutnjak-662b3a2aa/?originalSubdomain=hr',
+    icon: LinkedinIcon,
+  },
+  // No real TikTok profile sourced yet — placeholder until Marko supplies one.
+  { label: 'TikTok', href: '#', icon: TiktokIcon },
   { label: 'Email', href: 'mailto:matija@edenville.hr', icon: MailIcon },
   { label: 'Telefon', href: 'tel:+385915558995', icon: PhoneIcon },
 ];
@@ -55,7 +72,7 @@ export function Footer() {
                 </a>
               </p>
             </div>
-            <div className="mt-6 flex items-center gap-4">
+            <div className="mt-6 flex flex-wrap items-center gap-4">
               {SOCIAL_LINKS.map(({ label, href, icon: Icon }) => (
                 <a
                   key={label}
@@ -69,6 +86,10 @@ export function Footer() {
                 </a>
               ))}
             </div>
+
+            <p className="text-cream/40 mt-6 border-t border-white/10 pt-6 text-xs tracking-wide">
+              Licencirana agencija za nekretnine
+            </p>
           </div>
 
           <div>

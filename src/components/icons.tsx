@@ -67,6 +67,36 @@ export function LinkedinIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+export function YoutubeIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+      <rect
+        x="2.5"
+        y="5.5"
+        width="19"
+        height="13"
+        rx="3.5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
+      <path d="M10.4 9.2v5.6l4.9-2.8Z" fill="currentColor" />
+    </svg>
+  );
+}
+
+export function TiktokIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+      <path
+        d="M15.8 3.5c.45 2.15 1.8 3.5 4.05 3.7v2.55a6.7 6.7 0 0 1-4.05-1.3v6.15a5.25 5.25 0 1 1-5.25-5.25c.28 0 .55.02.8.07v2.68a2.6 2.6 0 1 0 1.8 2.5V3.5Z"
+        stroke="currentColor"
+        strokeWidth="1.3"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export function CameraIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>

@@ -34,9 +34,23 @@ export function SearchExperience({
 
   const results = useMemo(() => filterProperties(properties, filters), [properties, filters]);
   const filtersActive = hasActiveFilters(filters);
+  const availableRegions = useMemo(
+    () =>
+      [...new Set(properties.map((property) => property.region))].sort((a, b) =>
+        a.localeCompare(b, 'hr'),
+      ),
+    [properties],
+  );
   const availableLocations = useMemo(
     () =>
       [...new Set(properties.map((property) => property.location))].sort((a, b) =>
+        a.localeCompare(b, 'hr'),
+      ),
+    [properties],
+  );
+  const availableAttributes = useMemo(
+    () =>
+      [...new Set(properties.flatMap((property) => property.attributes))].sort((a, b) =>
         a.localeCompare(b, 'hr'),
       ),
     [properties],
@@ -71,8 +85,26 @@ export function SearchExperience({
             Istaknute Nekretnine
           </label>
 
+          {availableRegions.length > 1 ? (
+            <FilterGroup title="Grad" className="flex-row flex-wrap gap-2">
+              {availableRegions.map((region) => (
+                <FilterPill
+                  key={region}
+                  label={region}
+                  checked={filters.regions.has(region)}
+                  onChange={() =>
+                    setFilters((prev) => ({
+                      ...prev,
+                      regions: toggleSetValue(prev.regions, region),
+                    }))
+                  }
+                />
+              ))}
+            </FilterGroup>
+          ) : null}
+
           <FilterGroup
-            title="Lokacija"
+            title="Kvart"
             className="max-h-52 flex-row flex-wrap gap-2 overflow-y-auto pr-1"
           >
             {availableLocations.map((location) => (
@@ -137,6 +169,24 @@ export function SearchExperience({
               />
             ))}
           </FilterGroup>
+
+          {availableAttributes.length > 0 ? (
+            <FilterGroup title="Značajke" className="flex-row flex-wrap gap-2">
+              {availableAttributes.map((attribute) => (
+                <FilterPill
+                  key={attribute}
+                  label={attribute}
+                  checked={filters.attributes.has(attribute)}
+                  onChange={() =>
+                    setFilters((prev) => ({
+                      ...prev,
+                      attributes: toggleSetValue(prev.attributes, attribute),
+                    }))
+                  }
+                />
+              ))}
+            </FilterGroup>
+          ) : null}
         </div>
       </aside>
 

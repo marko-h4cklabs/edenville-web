@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
@@ -5,12 +6,15 @@ export function Logo({ className }: { className?: string }) {
   return (
     <Link
       href="/"
-      className={cn(
-        'font-serif text-2xl tracking-tight italic transition-opacity hover:opacity-80',
-        className,
-      )}
+      className={cn('inline-flex shrink-0 transition-opacity hover:opacity-80', className)}
     >
-      Eden<span className="text-gold">Ville</span>
+      <Image
+        src="/images/edenville-logo.png"
+        alt="EdenVille"
+        width={852}
+        height={249}
+        className="h-9 w-auto sm:h-10"
+      />
     </Link>
   );
 }

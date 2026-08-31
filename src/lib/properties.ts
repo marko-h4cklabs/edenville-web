@@ -30,13 +30,17 @@ export type Property = {
   title: string;
   /** A single value (138) or a unit range as a string ("58 - 97"). */
   sizeM2: number | string;
-  /** Freeform neighbourhood/town text from Baza — not a fixed list. */
+  /** City/town, e.g. "Zagreb" — Baza's `region` column. */
+  region: string;
+  /** Freeform neighbourhood/district text from Baza — not a fixed list. */
   location: string;
   propertyType: PropertyType;
   /** null for "Na Upit" (price on request) listings. */
   priceEUR: number | null;
   bedrooms: number;
   bathrooms: number;
+  /** Freeform highlight tags from Baza, e.g. "Bazen", "Parking", "Pogled na more". */
+  attributes: string[];
   images: string[];
   description: string;
   featured: boolean;
@@ -47,7 +51,7 @@ const FEATURED_COUNT = 4;
 
 /** Only the nekretnine columns this site actually needs — never sellers, agent_id, mediation/commission details, etc. */
 const SELECT_COLUMNS =
-  'code, title, type, region, location, price, surface_area, bedrooms, bathrooms, images, description, created_at';
+  'code, title, type, region, location, price, surface_area, bedrooms, bathrooms, attributes, images, description, created_at';
 
 type NekretnineRow = {
   code: string;
@@ -59,6 +63,7 @@ type NekretnineRow = {
   surface_area: number;
   bedrooms: number;
   bathrooms: number;
+  attributes: unknown;
   images: unknown;
   description: string;
   created_at: string;
@@ -102,16 +107,21 @@ function mapRow(row: NekretnineRow): Property {
   const images = Array.isArray(row.images)
     ? row.images.filter((image): image is string => typeof image === 'string')
     : [];
+  const attributes = Array.isArray(row.attributes)
+    ? row.attributes.filter((attribute): attribute is string => typeof attribute === 'string')
+    : [];
 
   return {
     slug: `${slugify(row.title)}-${slugify(row.code)}`,
     title: row.title,
     sizeM2: row.surface_area,
+    region: row.region,
     location: row.location,
     propertyType: row.type as PropertyType,
     priceEUR: row.price === 0 ? null : row.price,
     bedrooms: row.bedrooms,
     bathrooms: row.bathrooms,
+    attributes,
     images,
     description: row.description,
     featured: false,

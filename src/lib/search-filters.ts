@@ -38,20 +38,24 @@ export const BEDROOM_OPTIONS: {
 export type SearchFilters = {
   query: string;
   featuredOnly: boolean;
+  regions: Set<string>;
   locations: Set<string>;
   propertyTypes: Set<PropertyType>;
   priceRanges: Set<PriceRangeKey>;
   bedrooms: Set<BedroomKey>;
+  attributes: Set<string>;
 };
 
 export function createEmptyFilters(initialQuery = ''): SearchFilters {
   return {
     query: initialQuery,
     featuredOnly: false,
+    regions: new Set(),
     locations: new Set(),
     propertyTypes: new Set(),
     priceRanges: new Set(),
     bedrooms: new Set(),
+    attributes: new Set(),
   };
 }
 
@@ -59,10 +63,12 @@ export function hasActiveFilters(filters: SearchFilters): boolean {
   return (
     filters.query.trim().length > 0 ||
     filters.featuredOnly ||
+    filters.regions.size > 0 ||
     filters.locations.size > 0 ||
     filters.propertyTypes.size > 0 ||
     filters.priceRanges.size > 0 ||
-    filters.bedrooms.size > 0
+    filters.bedrooms.size > 0 ||
+    filters.attributes.size > 0
   );
 }
 
@@ -91,6 +97,8 @@ export function filterProperties(properties: Property[], filters: SearchFilters)
 
     if (filters.featuredOnly && !property.featured) return false;
 
+    if (filters.regions.size > 0 && !filters.regions.has(property.region)) return false;
+
     if (filters.locations.size > 0 && !filters.locations.has(property.location)) return false;
 
     if (filters.propertyTypes.size > 0 && !filters.propertyTypes.has(property.propertyType)) {
@@ -109,6 +117,13 @@ export function filterProperties(properties: Property[], filters: SearchFilters)
         (option) => filters.bedrooms.has(option.key) && option.test(property.bedrooms),
       );
       if (!matchesBedrooms) return false;
+    }
+
+    if (filters.attributes.size > 0) {
+      const matchesAttribute = property.attributes.some((attribute) =>
+        filters.attributes.has(attribute),
+      );
+      if (!matchesAttribute) return false;
     }
 
     return true;
