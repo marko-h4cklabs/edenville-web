@@ -35,7 +35,11 @@ export function Footer() {
       <div
         aria-hidden="true"
         className="absolute inset-0 opacity-10"
-        style={{ backgroundImage: 'url(/images/footer-noise.png)', backgroundRepeat: 'repeat', backgroundSize: '150px' }}
+        style={{
+          backgroundImage: 'url(/images/footer-noise.png)',
+          backgroundRepeat: 'repeat',
+          backgroundSize: '150px',
+        }}
       />
 
       <div className="px-gutter relative mx-auto max-w-7xl py-16 sm:py-20">

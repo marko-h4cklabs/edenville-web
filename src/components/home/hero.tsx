@@ -19,6 +19,7 @@ export function Hero() {
         className="object-cover"
       />
       <div className="from-ink-deep/90 via-ink-deep/40 absolute inset-0 bg-gradient-to-t to-transparent" />
+      <div className="pointer-events-none absolute inset-0 [background:radial-gradient(ellipse_at_center,transparent_40%,rgba(10,11,11,0.6)_100%)]" />
       <div className="px-gutter relative z-10 mx-auto flex max-w-3xl flex-col items-center py-24">
         <div className="flex flex-wrap items-center justify-center gap-3">
           {STATS.map((stat) => (
@@ -30,7 +31,14 @@ export function Hero() {
             </span>
           ))}
         </div>
-        <h1 className="text-cream mt-8 font-serif text-4xl leading-tight italic sm:text-5xl md:text-6xl">
+        <div className="text-gold/90 mt-10 flex items-center gap-4">
+          <span aria-hidden="true" className="bg-gold/40 h-px w-10" />
+          <span className="font-serif text-xs tracking-[0.35em] uppercase italic [text-shadow:0_1px_10px_rgba(0,0,0,0.4)]">
+            Zagreb · Luksuzne Nekretnine
+          </span>
+          <span aria-hidden="true" className="bg-gold/40 h-px w-10" />
+        </div>
+        <h1 className="text-cream mt-5 font-serif text-4xl leading-tight tracking-tight italic [text-shadow:0_2px_20px_rgba(0,0,0,0.45)] sm:text-5xl md:text-6xl lg:text-7xl">
           Pronađite svoju idealnu <span className="text-gold">&ldquo;Vilu iz Edena&rdquo;</span>
         </h1>
 
@@ -57,7 +65,7 @@ export function Hero() {
 
         <Link
           href="/search"
-          className="bg-gold text-ink hover:bg-gold-muted shadow-gold/20 mt-6 rounded-full px-9 py-4 text-sm font-semibold tracking-wide shadow-md transition-all duration-200 hover:scale-[1.03] hover:shadow-lg"
+          className="bg-gold text-ink hover:bg-gold-muted shadow-gold/20 mt-6 rounded-full px-9 py-4 text-xs font-semibold tracking-[0.12em] uppercase shadow-md transition-all duration-200 hover:scale-[1.03] hover:shadow-lg"
         >
           Potraži nekretnine
         </Link>

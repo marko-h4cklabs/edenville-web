@@ -39,7 +39,7 @@ export function About() {
         <div>
           <div className="fade-in-up">
             <p className="text-gold text-sm font-semibold tracking-[0.15em] uppercase">O nama</p>
-            <h2 className="text-ink mt-3 font-serif text-3xl italic sm:text-4xl">
+            <h2 className="text-ink mt-3 font-serif text-3xl tracking-tight italic sm:text-4xl lg:text-5xl">
               Upoznajte EdenVille
             </h2>
           </div>

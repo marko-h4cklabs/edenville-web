@@ -34,7 +34,7 @@ export function Header() {
           ))}
           <Link
             href={CTA_LINK.href}
-            className="bg-gold text-ink hover:bg-gold-muted shadow-gold/20 rounded-full px-6 py-3 text-sm font-semibold tracking-wide shadow-sm transition-all duration-200 hover:scale-[1.03] hover:shadow-md"
+            className="bg-gold text-ink hover:bg-gold-muted shadow-gold/20 rounded-full px-6 py-3 text-xs font-semibold tracking-[0.12em] uppercase shadow-sm transition-all duration-200 hover:scale-[1.03] hover:shadow-md"
           >
             {CTA_LINK.label}
           </Link>
@@ -71,7 +71,7 @@ export function Header() {
           <Link
             href={CTA_LINK.href}
             onClick={() => setIsMenuOpen(false)}
-            className="bg-gold text-ink hover:bg-gold-muted shadow-gold/20 mt-3 rounded-full px-6 py-3 text-center text-sm font-semibold tracking-wide shadow-sm transition-all duration-200 hover:shadow-md hover:brightness-105"
+            className="bg-gold text-ink hover:bg-gold-muted shadow-gold/20 mt-3 rounded-full px-6 py-3 text-center text-xs font-semibold tracking-[0.12em] uppercase shadow-sm transition-all duration-200 hover:shadow-md hover:brightness-105"
           >
             {CTA_LINK.label}
           </Link>

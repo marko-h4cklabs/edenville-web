@@ -12,9 +12,13 @@ export function PropertyCard({ property }: { property: Property }) {
   return (
     <Link
       href={`/Property-Details/${property.slug}`}
-      className="group border-line hover:border-gold/30 block overflow-hidden rounded-2xl border bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+      className="group border-line hover:border-gold/30 relative block overflow-hidden rounded-2xl border bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
     >
-      <div className="relative aspect-[4/3] overflow-hidden">
+      <span
+        aria-hidden="true"
+        className="bg-gold absolute inset-x-0 top-0 z-10 h-[3px] origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"
+      />
+      <div className="relative aspect-[3/2] overflow-hidden">
         {coverImage ? (
           <Image
             src={coverImage}

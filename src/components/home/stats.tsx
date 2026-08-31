@@ -9,7 +9,9 @@ export function Stats() {
       <div className="px-gutter mx-auto grid max-w-4xl grid-cols-1 gap-12 text-center sm:grid-cols-2">
         {STATS.map((stat) => (
           <div key={stat.label}>
-            <p className="text-gold font-serif text-5xl italic sm:text-6xl">{stat.value}</p>
+            <p className="text-gold font-serif text-6xl tracking-tight italic sm:text-7xl lg:text-8xl">
+              {stat.value}
+            </p>
             <p className="text-cream/70 mt-3 text-sm font-medium tracking-[0.15em] uppercase">
               {stat.label}
             </p>

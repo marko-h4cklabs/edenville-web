@@ -55,7 +55,7 @@ export function Faq() {
       <div className="px-gutter mx-auto max-w-3xl">
         <div className="fade-in-up text-center">
           <p className="text-gold text-sm font-semibold tracking-[0.15em] uppercase">FAQ</p>
-          <h2 className="text-ink mt-3 font-serif text-3xl italic sm:text-4xl">
+          <h2 className="text-ink mt-3 font-serif text-3xl tracking-tight italic sm:text-4xl lg:text-5xl">
             Vi ste pitali. Mi smo odgovorili.
           </h2>
         </div>
@@ -75,7 +75,7 @@ export function Faq() {
         <div className="mt-12 flex justify-center">
           <Link
             href="/contact"
-            className="bg-gold text-ink hover:bg-gold-muted shadow-gold/20 rounded-full px-9 py-4 text-sm font-semibold tracking-wide shadow-md transition-all duration-200 hover:scale-[1.03] hover:shadow-lg"
+            className="bg-gold text-ink hover:bg-gold-muted shadow-gold/20 rounded-full px-9 py-4 text-xs font-semibold tracking-[0.12em] uppercase shadow-md transition-all duration-200 hover:scale-[1.03] hover:shadow-lg"
           >
             Kontaktirajte Nas
           </Link>
