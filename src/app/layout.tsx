@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Lato, Playfair_Display } from 'next/font/google';
+import Script from 'next/script';
 import { Footer } from '@/components/layout/footer';
 import { Header } from '@/components/layout/header';
 import './globals.css';
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <Script src="https://real-estate-chatbot-eta.vercel.app/widget-embed.js" strategy="afterInteractive" />
       </body>
     </html>
   );
