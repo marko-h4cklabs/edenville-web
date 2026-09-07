@@ -35,12 +35,12 @@ export function Hero() {
         <div className="text-gold/90 mt-10 flex items-center gap-4">
           <span aria-hidden="true" className="bg-gold/40 h-px w-10" />
           <span className="font-serif text-xs tracking-[0.35em] uppercase italic [text-shadow:0_1px_10px_rgba(0,0,0,0.4)]">
-            Zagreb · Luksuzne Nekretnine
+            Nekretnine Hrvatska
           </span>
           <span aria-hidden="true" className="bg-gold/40 h-px w-10" />
         </div>
         <h1 className="text-cream mt-5 font-serif text-4xl leading-tight tracking-tight italic [text-shadow:0_2px_20px_rgba(0,0,0,0.45)] sm:text-5xl md:text-6xl lg:text-7xl">
-          Pronađite svoju idealnu <span className="text-gold">&ldquo;Vilu iz Edena&rdquo;</span>
+          Pronađite svoju idealnu <span className="text-gold">nekretninu</span>
         </h1>
 
         <form
