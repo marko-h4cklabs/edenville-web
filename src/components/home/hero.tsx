@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { SearchIcon } from '@/components/icons';
 
@@ -10,14 +9,16 @@ const STATS = [
 export function Hero() {
   return (
     <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden text-center">
-      <Image
-        src="/images/hero-bg.jpg"
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
-      />
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        poster="/images/hero-bg.jpg"
+        className="absolute inset-0 size-full object-cover"
+      >
+        <source src="/videos/hero-bg-compressed.mp4" type="video/mp4" />
+      </video>
       <div className="from-ink-deep/90 via-ink-deep/40 absolute inset-0 bg-gradient-to-t to-transparent" />
       <div className="pointer-events-none absolute inset-0 [background:radial-gradient(ellipse_at_center,transparent_40%,rgba(10,11,11,0.6)_100%)]" />
       <div className="px-gutter relative z-10 mx-auto flex max-w-3xl flex-col items-center py-24">
