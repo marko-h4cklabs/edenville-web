@@ -27,8 +27,8 @@ export function About() {
           </div>
           <div className="border-mist absolute -right-6 -bottom-6 h-2/5 w-2/5 overflow-hidden rounded-2xl border-4">
             <Image
-              src="/images/about-portrait-lifestyle.jpg"
-              alt="Matija Kutnjak"
+              src="/images/sky-office.jpg"
+              alt=""
               fill
               sizes="200px"
               className="object-cover"
