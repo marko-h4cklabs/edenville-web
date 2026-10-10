@@ -25,6 +25,7 @@ export function PropertyGallery({ images, title }: { images: string[]; title?: s
               title ? `${title} — fotografija ${activeIndex + 1}` : `Fotografija ${activeIndex + 1}`
             }
             fill
+            unoptimized
             priority={activeIndex === 0}
             sizes="(min-width: 1024px) 80vw, 100vw"
             className="object-cover"
@@ -76,7 +77,7 @@ export function PropertyGallery({ images, title }: { images: string[]; title?: s
                 index === activeIndex ? 'ring-gold' : 'hover:ring-line ring-transparent',
               )}
             >
-              <Image src={image} alt="" fill sizes="120px" className="object-cover" />
+              <Image src={image} alt="" fill unoptimized sizes="120px" className="object-cover" />
             </button>
           ))}
         </div>
