@@ -24,7 +24,7 @@
 
 @theme inline {
   --font-serif: var(--font-playfair);
-  --font-sans: var(--font-lato);
+  --font-sans: var(--font-dm-sans);
 }
 
 body {

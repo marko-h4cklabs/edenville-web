@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Lato, Playfair_Display } from 'next/font/google';
+import { DM_Sans, Playfair_Display } from 'next/font/google';
 import Script from 'next/script';
 import { Footer } from '@/components/layout/footer';
 import { Header } from '@/components/layout/header';
@@ -13,10 +13,9 @@ const playfairDisplay = Playfair_Display({
   display: 'swap',
 });
 
-const lato = Lato({
-  variable: '--font-lato',
+const dmSans = DM_Sans({
+  variable: '--font-dm-sans',
   subsets: ['latin', 'latin-ext'],
-  weight: ['300', '400', '700', '900'],
   display: 'swap',
 });
 
@@ -28,12 +27,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="hr" className={`${playfairDisplay.variable} ${lato.variable} h-full antialiased`}>
+    <html lang="hr" className={`${playfairDisplay.variable} ${dmSans.variable} h-full antialiased`}>
       <body className="bg-cream text-ink flex min-h-full flex-col font-sans">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
-        <Script src="https://real-estate-chatbot-eta.vercel.app/widget-embed.js" strategy="afterInteractive" />
+        <Script
+          src="https://real-estate-chatbot-eta.vercel.app/widget-embed.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
