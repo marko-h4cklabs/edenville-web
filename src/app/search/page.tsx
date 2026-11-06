@@ -4,6 +4,8 @@ import { ArrowLeftIcon } from '@/components/icons';
 import { SearchExperience } from '@/components/search/search-experience';
 import { getProperties } from '@/lib/properties';
 
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   title: 'Tražilica Nekretnina | EdenVille',
   description:

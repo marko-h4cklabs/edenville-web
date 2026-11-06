@@ -6,6 +6,8 @@ import { ReviewsPreview } from '@/components/home/reviews-preview';
 import { Stats } from '@/components/home/stats';
 import { SectionDivider } from '@/components/ui/section-divider';
 
+export const revalidate = 300;
+
 export default function Home() {
   return (
     <>

@@ -49,6 +49,9 @@ export type Property = {
 
 const FEATURED_COUNT = 4;
 
+/** How long (seconds) Next's data cache keeps a Supabase response before refetching. */
+const REVALIDATE_SECONDS = 300;
+
 /** Only the nekretnine columns this site actually needs — never sellers, agent_id, mediation/commission details, etc. */
 const SELECT_COLUMNS =
   'code, title, type, region, location, price, surface_area, bedrooms, bathrooms, attributes, images, description, created_at';
@@ -82,7 +85,14 @@ function getSupabaseClient(): SupabaseClient | null {
 
   if (!cachedClient) {
     try {
-      cachedClient = createClient(url, key);
+      cachedClient = createClient(url, key, {
+        global: {
+          // Without an expiry, Next caches the response for good during
+          // prerendering, so builds can reuse an old listing set.
+          fetch: (input, init) =>
+            fetch(input, { ...init, next: { revalidate: REVALIDATE_SECONDS } }),
+        },
+      });
     } catch (error) {
       console.error('Failed to create Supabase client — no properties will be returned.', error);
       return null;
@@ -139,9 +149,10 @@ async function fetchActiveProperties(): Promise<Property[]> {
     .eq('status', 'active')
     .order('created_at', { ascending: false });
 
+  // Throw rather than return [], so a failed build fails instead of
+  // publishing an empty site, and a failed refresh keeps the last good page.
   if (error) {
-    console.error('Failed to fetch properties from Baza', error);
-    return [];
+    throw new Error(`Failed to fetch properties from Baza: ${error.message}`, { cause: error });
   }
 
   return (data ?? []).map((row, index) => ({

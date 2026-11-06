@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { DashboardGrid } from '@/components/dashboard/dashboard-grid';
 import { getProperties } from '@/lib/properties';
 
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   title: 'Sve Nekretnine | EdenVille',
   description: 'Pregledajte sve dostupne luksuzne nekretnine u ponudi agencije EdenVille.',

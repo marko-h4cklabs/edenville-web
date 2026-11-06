@@ -8,6 +8,8 @@ import { PropertyGallery } from '@/components/property/property-gallery';
 import { PropertyMeta } from '@/components/property/property-meta';
 import { getProperties, getPropertyBySlug, getRelatedProperties } from '@/lib/properties';
 
+export const revalidate = 300;
+
 export async function generateStaticParams() {
   const properties = await getProperties();
   return properties.map((property) => ({ slug: property.slug }));
