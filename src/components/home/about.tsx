@@ -19,6 +19,7 @@ export function About() {
           <div className="relative h-full w-full overflow-hidden rounded-2xl">
             <Image
               src="/images/about-portrait-main.jpg"
+              unoptimized
               alt="Matija Kutnjak"
               fill
               sizes="(min-width: 1024px) 384px, 90vw"
@@ -28,6 +29,7 @@ export function About() {
           <div className="border-mist absolute -right-6 -bottom-6 h-2/5 w-2/5 overflow-hidden rounded-2xl border-4">
             <Image
               src="/images/sky-office.jpg"
+              unoptimized
               alt=""
               fill
               sizes="200px"

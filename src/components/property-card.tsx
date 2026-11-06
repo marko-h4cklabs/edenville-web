@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { BathIcon, BedIcon, CameraIcon } from '@/components/icons';
+import { PropertyImage } from '@/components/property/property-image';
 import { ArchitecturalPlaceholder } from '@/components/ui/architectural-placeholder';
 import { formatPropertyPrice, formatPropertySize, type Property } from '@/lib/properties';
 import { getPriceRangeLabel } from '@/lib/search-filters';
@@ -20,11 +20,10 @@ export function PropertyCard({ property }: { property: Property }) {
       />
       <div className="relative aspect-[3/2] overflow-hidden">
         {coverImage ? (
-          <Image
+          <PropertyImage
             src={coverImage}
             alt={property.title}
-            fill
-            sizes="(min-width: 1280px) 33vw, (min-width: 640px) 50vw, 100vw"
+            sizes="(min-width: 640px) 400px, 100vw"
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (

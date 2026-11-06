@@ -92,6 +92,7 @@ export function Footer() {
               <div className="flex items-center gap-4">
                 <Image
                   src="/images/hgk-crest.png"
+                  unoptimized
                   alt="HGK"
                   width={562}
                   height={399}

@@ -1,8 +1,8 @@
 'use client';
 
-import Image from 'next/image';
 import { useState } from 'react';
 import { CameraIcon, ChevronLeftIcon, ChevronRightIcon } from '@/components/icons';
+import { PropertyImage } from '@/components/property/property-image';
 import { ArchitecturalPlaceholder } from '@/components/ui/architectural-placeholder';
 import { cn } from '@/lib/utils';
 
@@ -18,15 +18,14 @@ export function PropertyGallery({ images, title }: { images: string[]; title?: s
     <div>
       <div className="relative aspect-[16/10] overflow-hidden rounded-2xl">
         {total > 0 ? (
-          <Image
+          <PropertyImage
             key={activeIndex}
             src={images[activeIndex]}
             alt={
               title ? `${title} — fotografija ${activeIndex + 1}` : `Fotografija ${activeIndex + 1}`
             }
-            fill
             priority={activeIndex === 0}
-            sizes="(min-width: 1024px) 80vw, 100vw"
+            sizes="(min-width: 1200px) 1200px, 100vw"
             className="object-cover"
           />
         ) : (
@@ -76,7 +75,13 @@ export function PropertyGallery({ images, title }: { images: string[]; title?: s
                 index === activeIndex ? 'ring-gold' : 'hover:ring-line ring-transparent',
               )}
             >
-              <Image src={image} alt="" fill sizes="120px" className="object-cover" />
+              <PropertyImage
+                src={image}
+                alt=""
+                sizes="120px"
+                loading="lazy"
+                className="object-cover"
+              />
             </button>
           ))}
         </div>

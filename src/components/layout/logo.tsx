@@ -10,6 +10,7 @@ export function Logo({ className }: { className?: string }) {
     >
       <Image
         src="/images/edenville-logo.png"
+        unoptimized
         alt="EdenVille"
         width={852}
         height={249}
