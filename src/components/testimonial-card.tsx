@@ -16,11 +16,11 @@ export function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
             <StarIcon key={i} className="size-3.5" />
           ))}
         </div>
-        <p className="text-ink/80 mt-5 font-serif text-base leading-relaxed italic">
+        <p className="text-ink/80 mt-5 text-base leading-relaxed">
           &ldquo;{testimonial.quote}&rdquo;
         </p>
         <div className="mt-6 flex items-center gap-3">
-          <div className="bg-ink text-cream ring-gold/30 flex size-10 items-center justify-center rounded-full font-serif text-sm italic ring-1">
+          <div className="bg-ink text-cream ring-gold/30 flex size-10 items-center justify-center rounded-full text-sm ring-1">
             {testimonial.initials}
           </div>
           <p className="text-ink text-sm font-semibold">{testimonial.name}</p>

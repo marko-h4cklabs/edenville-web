@@ -40,7 +40,7 @@ export function PropertyCard({ property }: { property: Property }) {
         </div>
       </div>
       <div className="p-6">
-        <h3 className="text-ink font-serif text-lg italic">{property.title}</h3>
+        <h3 className="text-ink text-lg">{property.title}</h3>
         <p className="text-gold mt-2 text-base font-semibold">
           {formatPropertyPrice(property.priceEUR)}
         </p>

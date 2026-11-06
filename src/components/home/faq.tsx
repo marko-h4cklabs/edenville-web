@@ -63,7 +63,7 @@ export function Faq() {
         <div className="divide-line border-line mt-12 divide-y border-t">
           {FAQ_ITEMS.map((item) => (
             <details key={item.question} className="group py-6">
-              <summary className="text-ink flex cursor-pointer list-none items-start justify-between gap-4 font-serif text-lg italic marker:content-none [&::-webkit-details-marker]:hidden">
+              <summary className="text-ink flex cursor-pointer list-none items-start justify-between gap-4 text-lg marker:content-none [&::-webkit-details-marker]:hidden">
                 {item.question}
                 <PlusIcon className="text-gold mt-1 size-5 shrink-0 transition-transform duration-200 group-open:rotate-45" />
               </summary>

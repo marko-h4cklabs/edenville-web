@@ -34,7 +34,7 @@ export function Hero() {
         </div>
         <div className="text-gold/90 mt-10 flex items-center gap-4">
           <span aria-hidden="true" className="bg-gold/40 h-px w-10" />
-          <span className="font-serif text-xs tracking-[0.35em] uppercase italic [text-shadow:0_1px_10px_rgba(0,0,0,0.4)]">
+          <span className="text-xs tracking-[0.35em] uppercase [text-shadow:0_1px_10px_rgba(0,0,0,0.4)]">
             Nekretnine Hrvatska
           </span>
           <span aria-hidden="true" className="bg-gold/40 h-px w-10" />

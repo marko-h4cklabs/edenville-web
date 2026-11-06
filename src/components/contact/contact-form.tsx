@@ -38,7 +38,7 @@ export function ContactForm() {
   if (status === 'success') {
     return (
       <div className="border-line rounded-2xl border bg-white p-10 text-center">
-        <p className="text-ink font-serif text-xl italic">Hvala Vam!</p>
+        <p className="text-ink text-xl">Hvala Vam!</p>
         <p className="text-muted mt-3">Kontaktirati ćemo vas u najkraćem mogućem roku.</p>
       </div>
     );
